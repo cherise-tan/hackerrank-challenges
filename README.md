@@ -5,6 +5,7 @@ A collection of hackerrank challenges and their solutions
 
 ### Problems Solved
 * Solve "Second Largest Number" problem using array + for-loop (arrays.js)
+* Reverse string (error-handling.js)
 
 #### Hello World
 * Use ```console.log();``` to print out strings/variables etc.
@@ -189,3 +190,10 @@ Writing a function that returns n! (n factorial)
   ```
 
 ##### Throw
+* The THROW statement can be used to throw an exception. This can be done in two ways:
+* throw value
+  * Can throw an exception by following the keyword "throw" with some "value" that we wish to use for the exception being thrown
+  * ```throw false;```
+* throw new Error(customError)
+  * Can throw the exception by following the keyword "throw" with "new Error(customError)", where "customError" is the value we want to use for the "message" property of the exception being thrown
+  * ```throw new Error("boo error");```
