@@ -134,3 +134,21 @@ Writing a function that returns n! (n factorial)
 * For-Of ```for (let variable of iterable) { statements }```
   * This iterates over iterable objects such as an Array/Map/Set/String/TypedArray/arguments object
   * It essential iterates over the VALUE of each distinct property in the structure, such as each letter in a word, or each element in an array
+
+#### Arrays
+* Create an array: ```var a = ['first', 'second'];```
+* Access first item in an array: ```a[0];```
+* Access last item in an array: ```a[a.length -1]```
+* Loop over an array: ```a.forEach(function(element, index, array) {...})```
+* Append to the end of an array: ```a.push('third');```
+* Remove from the end of an array: ```let removed = a.shift();   console.log(removed);```
+* Add to the front of an array: ```a.unshift('zero');```
+* Find the index of an item in an array: ```a.indexOf('second');```
+* Remove an item by index position: ```a.splice(index, numberToRemove);```
+* Copy an array: ```let b = array.slice();```
+* Sort an array: ```a.sort();``` -> this sorts in ascending order
+  * Sort in descending order using a compare function: ```a.sort(function(x,y) { return x < y; });```
+  * Sort in descending order using a compare arrow function: ```a.sort((x,y) => x < y);```
+* Iterate over an array: ```for (let element of a) { console.log(element); }```
+
+Solve "Second Largest Number" problem using array + for-loop
