@@ -24,3 +24,10 @@ A collection of hackerrank challenges and their solutions
 Writing a function that returns n! (n factorial)
 * 3! = 3 * 2 * 1
 * Needs to be written with a RECURSIVE solution (see functions.js)
+
+#### Let and Const
+* var: scope is within the context wherever it was declared
+  * global: if declared outside any function
+  * local: if declared within a function
+* let: scope is limited to the block/statement/expression in which it is used
+* const: creates a read-only reference to a value; value cannot be re-assigned
