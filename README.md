@@ -3,6 +3,9 @@ A collection of hackerrank challenges and their solutions
 
 ## 10 Days of JavaScript
 
+### Problems Solved
+* Solve "Second Largest Number" problem using array + for-loop (arrays.js)
+
 #### Hello World
 * Use ```console.log();``` to print out strings/variables etc.
 
@@ -151,4 +154,38 @@ Writing a function that returns n! (n factorial)
   * Sort in descending order using a compare arrow function: ```a.sort((x,y) => x < y);```
 * Iterate over an array: ```for (let element of a) { console.log(element); }```
 
-Solve "Second Largest Number" problem using array + for-loop
+#### Try, Catch, and Finally (Error Handling)
+* SYNTAX ERROR (parsing error)
+  * Because JS is an interpreted language, this type of error occurs when the code is interpreted -> i.e. at compile time
+  * When a syntax error occurs, only the code contained within the same THREAD as the syntax error is affected; independent code running in other threads will still be executed
+  * Example: ```console.log("Hello"``` -> note ')' has been forgotten
+* RUNTIME ERROR (exception)
+  * This type of error occurs during execution (i.e. after compilation/interpretation)
+  * Once a runtime error is encountered, an exception is THROWN in the hope that it will be CAUGHT by a subsequent section of code containing instructions on how to recover from the error
+  * Much like syntax errors, these affect the threat in which they occurred, but allow other independent threads to continue normal execution
+  * Example: ```function sum(a, b) {}    add(2,3)``` -> note 'add' is not defined
+* LOGICAL ERROR
+  * These are some of the most difficult errors to isolate because they cause the program to operate without terminating or crashing, but the operations they perform are not correct
+
+##### TRY, CATCH and FINALLY
+* The TRY block is the first step in error handling and is used for any block of code that is likely to raise an exception. It should contain 1+ statements to be executed, and is typically followed by at least one CATCH CLAUSE and/or the optional FINALLY CLAUSE.
+* It has three forms:
+  * TRY-CATCH: the 'catch' block immediately follows the 'try' block, and is only executed if an exception is thrown when executing code within the 'try block'
+    * It contains statements specifying how to proceed and recover from the thrown exception
+    * If no exception is thrown when executing the try block, the catch block is skipped
+    * If any statement within the try block (including a function call to code outside of the block) throws an exception, control immediately shifts to the catch clause.
+  * TRY-FINALLY
+    * The finally block is optional. It executes after the try and catch blocks, but before any subsequent statements following these blocks
+    * The finally block always executes, regardless of whether or not an exception was thrown or caught
+  * TRY-CATCH-FINALLY
+* An example:
+  ```
+  try {
+      console.log(getElement(arr, 4));
+  }
+  catch (err) {
+      console.log(err.message); // this will print out the error message
+  }
+  ```
+
+##### Throw
