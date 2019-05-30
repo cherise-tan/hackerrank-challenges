@@ -6,6 +6,7 @@ A collection of hackerrank challenges and their solutions
 ### Problems Solved
 * Solve "Second Largest Number" problem using array + for-loop (arrays.js)
 * Reverse string (error-handling.js)
+* Sock merchant -> search array for pairs (sock-merchant.js)
 
 #### Hello World
 * Use ```console.log();``` to print out strings/variables etc.
@@ -197,3 +198,10 @@ Writing a function that returns n! (n factorial)
 * throw new Error(customError)
   * Can throw the exception by following the keyword "throw" with "new Error(customError)", where "customError" is the value we want to use for the "message" property of the exception being thrown
   * ```throw new Error("boo error");```
+
+#### JavaScript Objects
+* Object: a collection of properties
+* Property: an association between a 'name' (key) and a 'value'
+  * We can access the property in multiple ways:
+    * Dot notation: ```objectName.propertyName```
+    * Bracket notation: ```objectName["propertyName"];```
