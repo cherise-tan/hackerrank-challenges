@@ -120,3 +120,17 @@ Writing a function that returns n! (n factorial)
 * ```string.trim()``` returns the string with the white space trimmed from its beginning and end
 * ```string.trimLeft()``` returns the string with the white space trimmed from its left side
 * ```string.trimRight()``` returns the string with the white space trimmed from its right side
+
+#### Loops
+* For: ```for(initialization; condition; finalExpression) { statements; }```
+* While ```while(condition) { statements; }```
+  * This executes the loop as long as the specified condition evaluates to TRUE
+  * The condition is evaluated before executing the statement
+* Do-While ```do { statements; } while (condition);```
+  * This executes the loop until the specified condition evaluates to FALSE
+  * The condition is evaluated after executing the statement, so the statement will always be executed at least once
+* For-In ```for (var variable in object) { console.log(variable + "=" + object[variable]); }```
+  * This iterates over each enumerable property (in this case named "variable") in an OBJECT, allowing statements to be executed for each distinct propety
+* For-Of ```for (let variable of iterable) { statements }```
+  * This iterates over iterable objects such as an Array/Map/Set/String/TypedArray/arguments object
+  * It essential iterates over the VALUE of each distinct property in the structure, such as each letter in a word, or each element in an array
