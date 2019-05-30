@@ -241,3 +241,214 @@ Writing a function that returns n! (n factorial)
     ```
     var actor1 = new Actor('Julia', 'Roberts');
     ```
+#### Classes
+
+##### Functional Classes
+* Using Functions:
+  * 1: Define a normal JavaScript function
+  * 2: Create an object using the "new" keyword
+  * 3: Define properties and methods for a created object using the "this" keyword
+    ```
+    function Fruit (type) {
+      this.type = type;
+      this.color = 'unknown';
+      this.getInformation = getFruitInformation;
+    }
+
+    function getFruitInformation() {
+      return 'This ' + this.type + ' is ' + this.color + '.';
+    }
+
+    let lime = new Fruit('Mexican lime');
+    lime.color = 'green';
+    ```
+    * NB the function 'getFruitInformation' can be defined internally (i.e. inside the 'Fruit' constructor function)
+* The Prototype Property
+  * The drawback of internally defining the "getInformation" function is that it recreates that function every time we create a new Fruit object
+  * Fortunately, every function in JavaScript has something called a prototype property, which is empty by default
+  * We can think of a function's prototype as an object blueprint; when we add methods and properties to the prototype, they are accessible to all instances of that function
+  * This is especially useful for inheritance
+  * Can add a function to our Constructor Function's Prototype like so:
+    ```
+    function Fruit (type) {
+      this.type = type;
+      this.color = 'unknown';
+    }
+
+    Fruit.prototype.getInformation = function() {
+      return 'This ' + this.type + ' is ' + this.color + '.';
+    }
+
+    let lime = new Fruit('Mexican lime');
+    lime.color = 'green';
+    ```
+* Using Object Literals
+  * We can use object literals to define an object's properties and functions by initializing a variable with a comma-separated list of property-value pairs enclosed in curly braces
+    ```
+    let lime = {
+      type: 'Mexican lime',
+      color: 'green'
+    }
+    ```
+* Singleton Class Using a Function
+  * A SINGLETON class is a design pattern that restricts a class to a SINGLE instance
+  * When we assign the value of ```new function() {...}``` to a variable, the following happens:
+    * We define an anonymous constructor function
+    * We invoke the anonymous constructor function with the "new" keyword
+    ```
+    let lime = new function() {
+      this.type = 'Mexican lime';
+      this.color = 'green';
+      };
+    }
+    ```
+
+##### Classes
+* JavaScript classes are a means of more simply and clearly creating objects and dealing with inheritance
+* Classes are defined in two ways:
+  * CLASS DECLARATIONS: to declare a class, we use the "class" keyword and follow it with the class' name
+    * Ideally we always write classes in TitleCase
+    ```
+    class Polygon {
+      constructor(height, width){
+        this.height = height;
+        this.width = width;
+      }
+    }
+
+    let p = new Polygon(1, 2);
+    ```
+    * An important distinction between FUNCTION declarations and CLASS declarations is that function declarations are hoisted (i.e. can be referenced before they're declared), but class declarations are not
+    * This means we MUST first declare our class before attempting to access/reference it
+  * CLASS EXPRESSIONS: these can also be used to define a class, and can be named or unnamed
+    * The name given to a named class expression is local to the class' body
+    * UNNAMED CLASS:
+      ```
+      let Polygon = class{
+        constructor(height, width){
+          this.height = height;
+          this.width = width;
+        }
+      }
+
+      let p = new Polygon(1, 2);
+      ```
+    * NAMED CLASS: ```let Polygon = class Polygon{...}```
+
+##### The Constuctor Method
+* This is a special method we use to create and initialise objects of a class
+* A class can only have ONE special method with the name "constructor"; attempting to write a class containing >1 constructor will throw an error
+* To implement INHERITANCE, we can use the "super" keyword in a constructor to call a parent class constructor
+
+##### Prototype Methods
+```
+class Polygon {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
+    }
+    getArea() {
+        return this.height * this.width;
+    }
+}
+
+const square = new Polygon(10, 10);
+```
+
+##### Static Methods
+* Static methods are methods relevant to all instances of a class — not just any one instance
+* These methods receive information from their arguments and not a class instance, which allows us to invoke a class' static methods without creating an instance of the class
+* In fact, we actually can't call a static method on an instantiated class object (attempting to do so throws a TypeError).
+* We define a class' static methods using the "static" keyword
+* We typically use these methods to create utility functions for applications, as they can't be called on class objects.
+```
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    static distance(a, b) {
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+}
+
+const p1 = new Point(5, 5);
+const p2 = new Point(10, 10);
+
+// The correct way to call a static method
+console.log(Point.distance(p1, p2));
+
+// Attempt to call a static method on an instance of the class will fail
+console.log(p1.distance(p1, p2));
+```
+
+##### Inheritance
+* In essence, this construct allows us to create an object prototype or class that's an extension of another object prototype or class
+* A class inheriting from some other class (referred to as a superclass or parent class) is called a subclass (or child class)
+* The subclass inherits the superclass' methods and behaviors, but it can also declare new ones or even override existing ones
+
+##### Subclassing with the "extends" keyword
+* We use the "extends" keyword in class declarations or class expressions to create a child class (i.e., subclass)
+```
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        console.log(this.name, 'speaks.');
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log(this.name, 'barks.');
+    }
+}
+```
+* We can also "extend" functional classes
+```
+function Animal(name) {
+    this.name = name;
+}
+
+Animal.prototype.speak = function() {
+    console.log(this.name, 'speaks.');
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log(this.name, 'barks.');
+    }
+}
+
+let spot = new Dog('Spot');
+spot.speak();
+```
+
+##### Superclass Calls using the "super" Keyword
+* We use the "super" keyword to call functions on an object's parent
+```
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        console.log(this.name, 'speaks.');
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        super.speak();
+        console.log(this.name, 'barks.');
+    }
+}
+
+let spot = new Dog('Spot');
+spot.speak();
+```
+
+##### Extending an Object
+* The ability to extend multiple classes from the same superclass (or model multiple object types after the same prototype) is powerful because it provides us with certain implied guarantees about the basic functionality of the subclasses; as extensions of the parent class, subclasses are guaranteed to (at minimum) have the superclass' fields, methods, and functions.
