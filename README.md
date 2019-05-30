@@ -206,3 +206,38 @@ Writing a function that returns n! (n factorial)
   * We can access the property in multiple ways:
     * Dot notation: ```objectName.propertyName```
     * Bracket notation: ```objectName["propertyName"];```
+* Adding a new property to an existing object: ```object.key3 = value3;```
+
+#####Creating an object
+* Using an Object Initialiser: this is a comma-separated list of 0+ property name-value pairs defining an object, enclosed in curly braces {}
+  * new Object():
+    ```
+    var o = new Object();
+    o.name1 = value1;
+    o.name2 = value2;
+    ```
+  * Object.create()
+    ```
+    var x = {name1: value1, name2: value2};
+    var o = Object.create(x);   // create a new object, based off 'x'
+    o.name1 = newValue1;   // thiw will change the value of 'name1'
+    ```
+  * Initialiser notation: ```var o = {name1: value1, name2:value2}```
+    * Creating object then adding properties using DOT notation:
+      ```
+      var o = {};
+      o.name1 = value1;
+      o.name2 = value2;
+      ```
+* Using a Constructor Function: creates an object in two steps
+  * 1: Define the object type by writing a constructor function. The convention here is for the function's name to be in UpperCamelCase
+    ```
+    function Actor(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+    ```
+  * 2: Use the new operator to create a new instance of the object
+    ```
+    var actor1 = new Actor('Julia', 'Roberts');
+    ```
