@@ -9,3 +9,9 @@ A collection of hackerrank challenges and their solutions
 #### Data Types
 * Converting from a string to an int: ```parseInt(string);```
 * Converting from a string to a float: ```parseFloat(string);```
+
+#### Arithmetic Operators
+* There are 3 types of operators:
+  * Unary: ```a++```
+  * Binary: ```a + b = c```
+  * Ternary: ```a ? b: c``` (this is a conditional operator)
