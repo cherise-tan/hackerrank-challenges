@@ -7,6 +7,7 @@ A collection of hackerrank challenges and their solutions
 * Solve "Second Largest Number" problem using array + for-loop (arrays.js)
 * Reverse string (error-handling.js)
 * Sock merchant -> search array for pairs (sock-merchant.js)
+* Counting valleys -> array + for-loop (counting-valleys.js)
 
 #### Hello World
 * Use ```console.log();``` to print out strings/variables etc.
