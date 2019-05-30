@@ -31,3 +31,12 @@ Writing a function that returns n! (n factorial)
   * local: if declared within a function
 * let: scope is limited to the block/statement/expression in which it is used
 * const: creates a read-only reference to a value; value cannot be re-assigned
+
+#### Conditional Statements: IF-ELSE
+* Equality (==) will convert the operands if they are not of the same type
+  * Same for Inequality (!=)
+* Strict Equality (===) requires operands to be of the same type
+  * Same for Strict Inequality (!==)
+* Ternary operators: ```a ? b: c```
+  * This is a shortcut for the 'if' statement -> "?" means "then"; ":" means "else"
+  * If 'a' is true 'b' will be executed, otherwise 'c' will be executed
