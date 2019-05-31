@@ -388,6 +388,24 @@ console.log(p1.distance(p1, p2));
 * In essence, this construct allows us to create an object prototype or class that's an extension of another object prototype or class
 * A class inheriting from some other class (referred to as a superclass or parent class) is called a subclass (or child class)
 * The subclass inherits the superclass' methods and behaviors, but it can also declare new ones or even override existing ones
+```
+class Rectangle {
+  constructor(w, h) {
+    this.w = w;
+    this.h = h;
+  }
+}
+
+Rectangle.prototype.area = function() {
+  return (this.w * this.h);
+};
+
+class Square extends Rectangle {
+  constructor(w) {
+    super(w, w);
+  }
+}
+```
 
 ##### Subclassing with the "extends" keyword
 * We use the "extends" keyword in class declarations or class expressions to create a child class (i.e., subclass)
