@@ -156,6 +156,8 @@ Writing a function that returns n! (n factorial)
   * Sort in descending order using a compare function: ```a.sort(function(x,y) { return x < y; });```
   * Sort in descending order using a compare arrow function: ```a.sort((x,y) => x < y);```
 * Iterate over an array: ```for (let element of a) { console.log(element); }```
+* Sum each value in an array ```a.reduce()```
+* Create a new array with the results of calling a provided function on every element in the calling array ```a.map(x => x*2)```
 
 #### Try, Catch, and Finally (Error Handling)
 * SYNTAX ERROR (parsing error)
@@ -539,5 +541,60 @@ The product of a and b is ${a * b}.`);
   Num3 ${b / a}`);
   ```
 
+#### Arrow Functions
+* These expressions bind the "this" value while using less syntax than a typical function expression
+* Arrow functions are always ANONYMOUS
+* Some examples of using this syntax:
+  ```
+  const makeArray = (...values) => { return values };
+  console.log('Array:', makeArray(1, 2, 3, 4));
+  console.log('Array:', makeArray(1, 2, 3, 4, 5, 6));
+
+  const getSum = (a, b) => { return a + b };
+  console.log('1 + 2 =', getSum(1, 2));
+
+  const greeting = 'Hello, World.';
+  const capitalize = (myString) => { return myString.toUpperCase() };
+  console.log(greeting, '=>', capitalize(greeting));
+  ```
+
+##### Sum the Elements of an Array
 ```
+const arr = [1, 2, 3, 4, 5];
+
+const sum = arr.reduce(function (a, b) {
+  return a + b;
+}, 0);
+```
+can be simplified to
+```
+const sum = arr.reduce((a, b) => { return a + b }, 0);
+```
+can be simplified to
+```
+const sum = arr.reduce((a, b) => a + b, 0);
+```
+
+##### Find the Length of Strings in an Array
+```
+const arr = ['first', 'second', 'third', 'fourth', 'fifth'];
+
+const len = arr.map(function(s) { return s.length });
+```
+can be simplified to
+```
+const len = arr.map(s => s.length);
+```
+
+##### Find Array Elements Greater Than a Value
+```
+const arr = [1, 2, 3, 4, 5];
+
+const greaterThan3 = arr.filter(function(a) {
+    return a > 3;
+});
+```
+can be simplified to
+```
+const greaterThan3 = arr.filter(a => a > 3);
 ```
