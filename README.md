@@ -470,3 +470,74 @@ spot.speak();
 
 ##### Extending an Object
 * The ability to extend multiple classes from the same superclass (or model multiple object types after the same prototype) is powerful because it provides us with certain implied guarantees about the basic functionality of the subclasses; as extensions of the parent class, subclasses are guaranteed to (at minimum) have the superclass' fields, methods, and functions.
+
+#### Template Literals
+* Template literals (formerly known as template strings) are string literals that allow for embedded expressions
+* Typically used to express strings spanning multiple lines or for string interpolation -> which allows us to create a template with 1+ placeholders for inserting variable text at a later time
+* Template literals are wrapped in BACKTICK characters, rather than in ""/''
+* A template literal can contain placeholders, which are preceded by a "$" and wrapped in curly braces ({})
+  * E.g. in the template literal ``` `${expression}` ```, the 'expression' text between the placeholders is passed to a function.
+    * The default function simply concatenates the template literal's parts into a single string
+* Any time we see an expression preceding a template literal, we call the expression a "tag" and the template string a "tagged template literal"
+  * In these instances, we call the tag expression (typically a function) with the processed template literal, which we can then manipulate before outputting the final string
+
+##### Multi-Line String using Template Literals
+```
+console.log(`first line
+second line`);
+```
+
+##### Expression Interpolation
+```
+const a = 2;
+const b = 3;
+
+console.log(`The sum of a and b is ${a + b}.
+The product of a and b is ${a * b}.`);
+```
+
+##### Tagged Template Literals
+* Tagged template literals allow us to use a function to modify the output of a template literal
+* In this example:
+  * The first argument contains an array of string literals
+  * The subsequently processed arguments are the values of the substitution expressions
+  * After processing the arguments, the function returns the manipulated string
+  ```
+  var a = 5;
+  var b = 10;
+
+  function foo(strings, ...values) {
+      console.log("." + strings[0] + ".");
+      console.log("." + strings[1] + ".");
+      console.log("." + strings[2] + ".");
+      console.log("." + strings[3] + ".");
+      console.log(values[0]);
+      console.log(values[1]);
+      console.log(values[2]);
+  }
+
+  foo`Sum ${a + b}
+  Product ${a * b}
+  Division ${b / a}`;
+  ```
+* We can also return from tagged templates:
+  ```
+  var a = 5;
+  var b = 10;
+
+  function foo(strings, ...values) {
+      let a = values[0];
+      let b = values[1];
+
+      return `Sum ${a + b}
+  Product ${a * b}
+  Division ${b / a}`;
+  }
+
+  console.log(foo`Num1 ${a + 10}
+  Num2 ${b * 2}
+  Num3 ${b / a}`);
+  ```
+
+```
+```
