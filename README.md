@@ -156,7 +156,8 @@ Writing a function that returns n! (n factorial)
   * Sort in descending order using a compare function: ```a.sort(function(x,y) { return x < y; });```
   * Sort in descending order using a compare arrow function: ```a.sort((x,y) => x < y);```
 * Iterate over an array: ```for (let element of a) { console.log(element); }```
-* Sum each value in an array ```a.reduce()```
+* Sum each value in an array ```a.reduce((accumulator, currentvalue) => accumulator + currentValue)```
+  * The function's returned value is assigned to 'accumulator' -> it is remembered across each iteration throughout the array, and ultimately becomes the final, single resulting value
 * Create a new array with the results of calling a provided function on every element in the calling array ```a.map(x => x*2)```
 
 #### Try, Catch, and Finally (Error Handling)
@@ -740,3 +741,35 @@ const greaterThan3 = arr.filter(a => a > 3);
     console.log(myString);
     console.log(myString.replace(re, replacementString));
     ```
+
+#### Bitwise Operators
+##### Binary Number Basics
+* The binary (base-2) numeral system is a way to express numbers
+* The number of symbols in a numeral system is called its "base" or "radix"
+* We use the notation ```(?)b``` to discuss numbers with different radixes
+  * '?' is the number; 'b' is the base
+  * e.g. (1101)2 is the binary equivalent of the decimal number (13)10
+* Each digit in a binary number is called a BIT
+
+##### Base-10 (Decimel) to Base-2 (Binary) Conversions
+* We use the following algorithm to convert a decimal number to a binary number:
+  * Take the decimel integer, divide it by 2, and record the quotient (the number of times 2 divided the integer) and the remainder (the number of units left over from the division -> which will always be 0 or 1)
+  * Repeat step 1 on the quotient until the quotient becomes 0
+  * Look at the sequence of the remainders
+    * The remainder from the first division operation corresponds to the binary's LEAST SIGNIFICANT BIT (LSB)
+    * The remainder from the last division operation corresponds to the MOST SIGNIFICANT BIT (MSB)
+    * To get our binary number, we simply need to concatenate these remainder bits from MOST to LEAST significant
+      ```
+      n   n/2   remainder   significance
+      71  35    1            LEAST
+      35  17    1
+      17  8     1
+      8   4     0
+      4   2     0
+      2   1     0
+      1   0     1            MOST
+      ```
+      * (71)10 => (1000111)2
+
+##### Base-2 to Base-10 Conversions
+*
