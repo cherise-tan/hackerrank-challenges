@@ -147,8 +147,9 @@ Writing a function that returns n! (n factorial)
 * Access last item in an array: ```a[a.length -1]```
 * Loop over an array: ```a.forEach(function(element, index, array) {...})```
 * Append to the end of an array: ```a.push('third');```
-* Remove from the end of an array: ```let removed = a.shift();   console.log(removed);```
 * Add to the front of an array: ```a.unshift('zero');```
+* Remove from the start of an array: ```let removed = a.shift();   console.log(removed);```
+* Remove from the end of an array: ```a.pop```
 * Find the index of an item in an array: ```a.indexOf('second');```
 * Remove an item by index position: ```a.splice(index, numberToRemove);```
 * Copy an array: ```let b = array.slice();```
